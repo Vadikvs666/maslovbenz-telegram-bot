@@ -1,4 +1,5 @@
 import logging
+import os
 
 import aiogram
 from dotenv import load_dotenv
@@ -8,7 +9,7 @@ dotenv_path = Path('.env')
 load_dotenv(dotenv_path=dotenv_path)
 
 
-
+API_TOKEN = os.getenv('API_TOKEN')
 
 
 # Configure logging
