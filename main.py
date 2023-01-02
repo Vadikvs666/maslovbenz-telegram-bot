@@ -36,7 +36,7 @@ async def help_handler(message: aiogram.types.Message):
 async def message_handler(message: aiogram.types.Message):
     logging.info("send liters - " + message.text)
     try:
-        liters = int(message.text)
+        liters = float(message.text.replace(",", "."))
         users_data[message.chat.id] = liters
         keyboard_markup = types.InlineKeyboardMarkup(row_width=3)
         text_and_data = (
@@ -65,8 +65,8 @@ async def inline_kb_answer_callback_handler(query: types.CallbackQuery):
 
     try:
         prop = int(answer_data)
-        liters = int(users_data[query.from_user.id])
-        res = int(liters/prop*1000);
+        liters = users_data[query.from_user.id]
+        res = int(liters / prop * 1000);
         text = f'Вам необходимо {res} миллилитров масла'
     except Exception as e:
         logging.info(f'Invalid input from user')
