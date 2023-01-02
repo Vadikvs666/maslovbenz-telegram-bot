@@ -7,7 +7,4 @@ services:
       dockerfile: Dockerfile
     environment:
       - API_TOKEN=${API_TOKEN}
-    volumes:
-      - "/bot:/bot"
-      - "/storage:/storage"
     restart: always
